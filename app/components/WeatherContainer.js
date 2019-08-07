@@ -13,20 +13,25 @@ export default class WeatherContainer extends Component {
     loaded: false
   }
   
-  requestWeatherData = () => {
-
+  requestWeatherData = (location) => {
+    console.log(location)
     axios({
       url: "http://localhost:3030/getWeatherData",
       method: "post",
       data: {
-        city: "Stroud"
+        city: location
       }
     }).then(
       response => {
-        this.setState({
-          loaded: true,
-          data: response.data
-        })
+        if (response.data) {
+          this.setState({
+            loaded: true,
+            data: response.data
+          })
+        }
+        else {
+          alert("there is no such city in the database");
+        }
       },
       error => {
         this.setState({
@@ -45,8 +50,10 @@ export default class WeatherContainer extends Component {
     return containers;
   }
 
-	componentDidMount() {
-		this.requestWeatherData();
+	componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.requestWeatherData(this.props.location);
+    }	
 	}
 
   render() {

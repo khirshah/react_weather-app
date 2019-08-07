@@ -51,14 +51,18 @@ function filterData(data) {
 }
 
 app.post('/getWeatherData', function(req, res, next) {
-  console.log(req.body)
-	fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stroud,uk&units=metric&APPID=d4c1d69ed7ce962b094e9f8cc1d2af5f`)
+	fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${req.body.city},uk&units=metric&APPID=d4c1d69ed7ce962b094e9f8cc1d2af5f`)
   .then(function(response) {
     return response.json();
   })
   .then(function(myJson) {
-    let processedData = filterData(myJson);
-    res.send(processedData);
+    if (myJson.message == 'city not found') {
+      res.send();
+    }
+    else {
+      let processedData = filterData(myJson);
+      res.send(processedData);
+    }
   });
 });
 
