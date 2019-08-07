@@ -15,7 +15,8 @@ module.exports = {
   	new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'React demo',
-      template: './app/template/index.html'
+      template: './app/template/index.html',
+      inject: false
     })
   ],
   resolve: { extensions: ["*", ".js", ".jsx"] },

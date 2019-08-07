@@ -26,27 +26,33 @@ app.get('/', (req, res) => {
 })
 
 function filterData(data) {
-  let mins = [], maxs = [], icons = [], values = [];
+  let mins = [], maxs = [], other = [], values = [];
   
   data.list.map((item) => {
     mins.push(item.main.temp_min);
     maxs.push(item.main.temp_max);
-    icons.push(item.weather[0].icon);
+    other.push({
+      icon:item.weather[0].icon,
+      date: item.dt,
+      dt: new Date(item.dt)
+    });
   });
 
   for(let i=0; i<mins.length;i+=8) {
     values.push({
       min: Math.round(Math.min(...mins.slice(i,i+8))),
       max:Math.round(Math.max(...maxs.slice(i,i+8))),
-      icon: icons[i+5]
+      icon: other[i+5].icon,
+      date: other[i+5].date,
+      dt: other[i+5].dt
     });
   }
   return values;
 }
 
-app.get('/getWeatherData', function(req, res, next) {
-
-	fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stroud,uk&units=metric&APPID=d4c1d69ed7ce962b094e9f8cc1d2af5f")
+app.post('/getWeatherData', function(req, res, next) {
+  console.log(req.body)
+	fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Stroud,uk&units=metric&APPID=d4c1d69ed7ce962b094e9f8cc1d2af5f`)
   .then(function(response) {
     return response.json();
   })

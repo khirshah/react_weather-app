@@ -2,15 +2,18 @@
 import React, { Component} from "react";
 import "./DailyWeather.css";
 
+//------------------- days array ---------------------------------------
+const days = ["Sun", "Mon","Tue", "Wed", "Thu", "Fri", "Sat"];
+
 //------------------------ COMPONENT -----------------------------------
 export default class DailyWeather extends Component {
 
   render() {
-    console.log("PROPS", this.props.data)
     return(
-      <div>
+      <div className="daily-weather">
+      	<div className="label">{days[new Date(this.props.data.date*1000).getDay()]}</div>
         <img src={require(`../img/${this.props.data.icon}.png`)}/>
-        <div className="daily-weather">{`${this.props.data.min}° ${this.props.data.max}°`}</div>
+        <div className="temperature">{`${this.props.data.min}° ${this.props.data.max}°`}</div>
       </div>
 
       )

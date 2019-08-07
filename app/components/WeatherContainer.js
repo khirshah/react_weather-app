@@ -10,16 +10,17 @@ const axios = require('axios');
 export default class WeatherContainer extends Component {
   
   state = {
-    loaded: false,
-    mins: '...', 
-    maxs: '...'
+    loaded: false
   }
   
   requestWeatherData = () => {
+
     axios({
       url: "http://localhost:3030/getWeatherData",
-      method: "get",
-
+      method: "post",
+      data: {
+        city: "Stroud"
+      }
     }).then(
       response => {
         this.setState({
@@ -37,7 +38,6 @@ export default class WeatherContainer extends Component {
   }
 
   createDailyWeather = () => {
-    console.log(typeof this.state.data,this.state.data)
     const containers = [];
     this.state.data.map((values, index) => {
       containers.push(<DailyWeather key={index} data={values}/>)
