@@ -2,6 +2,7 @@
 import React, { Component} from "react";
 import DailyWeather from "./DailyWeather";
 import "./WeatherContainer.css";
+import MessageBox from "./MessageBox";
 
 //------------------- module for http request ---------------------------
 const axios = require('axios');
@@ -10,7 +11,10 @@ const axios = require('axios');
 export default class WeatherContainer extends Component {
   
   state = {
-    loaded: false
+    loaded: false,
+    isMsgBoxVisible: false,
+    userMessage: "",
+    isWeatherVisible: false
   }
   
   requestWeatherData = (location) => {
@@ -26,17 +30,27 @@ export default class WeatherContainer extends Component {
         if (response.data) {
           this.setState({
             loaded: true,
-            data: response.data
+            isWeatherVisible: true,
+            isMsgBoxVisible: true,
+            userMessage: `Weather in ${location}`,
+            data: response.data,
           })
         }
         else {
-          alert("there is no such city in the database");
-        }
+          this.setState({
+            loaded: true,
+            isWeatherVisible: false,
+            isMsgBoxVisible: true,
+            userMessage: "There is no such city in the database"
+            }
+          )};
       },
       error => {
         this.setState({
-          error,
-          loaded: true
+          loaded: true,
+          isWeatherVisible: false,
+          isMsgBoxVisible: true,
+          userMessage: 'ERROR'
         })
       }
     )
@@ -57,12 +71,15 @@ export default class WeatherContainer extends Component {
 	}
 
   render() {
+    
     if(this.state.loaded == false) return null;
-    if (this.state.error) return "ERROR";
     return (
-        <div className="weather-container">
+      <div>
+        {this.state.isMsgBoxVisible && <MessageBox message={this.state.userMessage}/>}
+        {this.state.isWeatherVisible && <div className="weather-container">
           {this.createDailyWeather()} 
-        </div>
+        </div>}
+      </div>
       );
   }
 }

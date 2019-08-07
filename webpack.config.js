@@ -14,7 +14,7 @@ module.exports = {
   plugins: [
   	new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'React demo',
+      title: 'Weather app',
       template: './app/template/index.html',
       inject: false
     })
