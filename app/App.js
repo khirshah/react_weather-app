@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-import "./App.css";
+import style from "./App.css";
 import WeatherContainer from "./components/WeatherContainer";
 import LocationContainer from "./components/LocationContainer";
 
@@ -14,7 +14,7 @@ class App extends Component {
 
   render(){
     return(
-      <div className="App">
+      <div className={style.App}>
         <h1> Weather app </h1>
         <LocationContainer buttonclick={this.handleChange}/>
         <WeatherContainer location={this.state.location}/>

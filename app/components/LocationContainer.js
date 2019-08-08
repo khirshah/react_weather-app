@@ -1,6 +1,6 @@
 //------------------------- IMPORT --------------------------------------
 import React, { Component} from "react";
-import "./InputField.css";
+import "./LocationContainer.css";
 import SearchButton from "./Button";
 import InputField from "./InputField";
 
