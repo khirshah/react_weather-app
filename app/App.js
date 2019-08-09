@@ -18,6 +18,7 @@ const themes = {
 class App extends Component {
   state = {
   location: "",
+  themeName: "theme1",
   theme: theme1
   }
 
@@ -26,15 +27,18 @@ class App extends Component {
   }
 
   handleColorChange = (themenum) => {
-    this.setState({theme: themes[themenum]});
+    this.setState({
+      themeName: themenum,
+      theme: themes[themenum]
+    });
   }
 
   render(){
     return(
       <div className={[style.app,this.state.theme.app].join(' ')}>
         <div> Weather app </div>
-        <LocationContainer buttonclick={this.handleLocationChange}/>
-        <WeatherContainer location={this.state.location}/>
+        <LocationContainer theme={this.state.themeName} buttonclick={this.handleLocationChange}/>
+        <WeatherContainer theme={this.state.themeName} location={this.state.location}/>
         <ThemesContainer buttonclick={this.handleColorChange}/>
       </div>
     );

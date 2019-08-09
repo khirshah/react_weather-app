@@ -18,7 +18,7 @@ export default class LocationContainer extends Component {
     return(
       <div className="location-container">
       	<InputField onChange={this.handleChange}/>
-      	<SearchButton name="search-button" label="Search" onClick={this.props.buttonclick.bind(this,this.state.location)}/>
+      	<SearchButton theme={this.props.theme} name="search_button" label="Search" onClick={this.props.buttonclick.bind(this,this.state.location)}/>
       </div>
       )
   }
