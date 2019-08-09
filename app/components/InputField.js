@@ -1,6 +1,6 @@
 //------------------------- IMPORT --------------------------------------
 import React, { Component} from "react";
-import "./InputField.css";
+import "./inputField.css";
 
 //------------------------ COMPONENT -----------------------------------
 export default class InputField extends Component {

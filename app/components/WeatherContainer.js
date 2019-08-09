@@ -1,7 +1,7 @@
 //------------------------- IMPORT --------------------------------------
 import React, { Component} from "react";
 import DailyWeather from "./DailyWeather";
-import "./WeatherContainer.css";
+import styles from "./weatherContainer.css";
 import MessageBox from "./MessageBox";
 
 //------------------- module for http request ---------------------------
@@ -76,7 +76,7 @@ export default class WeatherContainer extends Component {
     return (
       <div>
         {this.state.isMsgBoxVisible && <MessageBox message={this.state.userMessage}/>}
-        {this.state.isWeatherVisible && <div className="weather-container">
+        {this.state.isWeatherVisible && <div className={styles.weather_container}>
           {this.createDailyWeather()} 
         </div>}
       </div>

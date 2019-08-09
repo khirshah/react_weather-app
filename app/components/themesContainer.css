@@ -1,0 +1,17 @@
+.theme_button1 {
+	width: 10px;
+	height: 10px;
+	background-color: #731A2B;
+	border: 1px solid white;
+}
+
+.theme_button2 {
+	width: 10px;
+	height: 10px;
+	background-color: #063546;
+	border: 1px solid white;
+}
+
+.themes_container {
+	background-color: green;
+}

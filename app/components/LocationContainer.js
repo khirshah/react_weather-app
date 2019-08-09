@@ -1,6 +1,6 @@
 //------------------------- IMPORT --------------------------------------
 import React, { Component} from "react";
-import "./LocationContainer.css";
+import "./locationContainer.css";
 import SearchButton from "./Button";
 import InputField from "./InputField";
 
@@ -18,7 +18,7 @@ export default class LocationContainer extends Component {
     return(
       <div className="location-container">
       	<InputField onChange={this.handleChange}/>
-      	<SearchButton onClick={this.props.buttonclick.bind(this,this.state.location)}/>
+      	<SearchButton name="search-button" label="Search" onClick={this.props.buttonclick.bind(this,this.state.location)}/>
       </div>
       )
   }

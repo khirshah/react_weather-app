@@ -1,6 +1,6 @@
 //------------------------- IMPORT --------------------------------------
 import React, { Component} from "react";
-import "./DailyWeather.css";
+import "./dailyWeather.css";
 
 //------------------- days array ---------------------------------------
 const days = ["Sun", "Mon","Tue", "Wed", "Thu", "Fri", "Sat"];
