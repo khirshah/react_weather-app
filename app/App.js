@@ -6,7 +6,7 @@ import LocationContainer from "./components/LocationContainer";
 import ThemesContainer from "./components/ThemesContainer";
 
 //------------------------- styles ------------------------------------
-import style from "./app.css";
+import styles from "./app.css";
 import theme1 from "./app_theme1.css";
 import theme2 from "./app_theme2.css";
 const themes = {
@@ -35,11 +35,13 @@ class App extends Component {
 
   render(){
     return(
-      <div className={[style.app,this.state.theme.app].join(' ')}>
-        <div> Weather app </div>
-        <LocationContainer theme={this.state.themeName} buttonclick={this.handleLocationChange}/>
-        <WeatherContainer theme={this.state.themeName} location={this.state.location}/>
-        <ThemesContainer buttonclick={this.handleColorChange}/>
+      <div className={[styles.app,this.state.theme.app].join(' ')}>
+        <div className={styles.appContainer}>
+          <div className={styles.appTitle}>Weather app</div>
+          <LocationContainer theme={this.state.themeName} buttonclick={this.handleLocationChange}/>
+          <WeatherContainer theme={this.state.themeName} location={this.state.location}/>
+          <ThemesContainer buttonclick={this.handleColorChange}/>
+        </div>
       </div>
     );
   }

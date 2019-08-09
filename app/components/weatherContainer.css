@@ -1,5 +1,10 @@
 .weather_container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.weather_items_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

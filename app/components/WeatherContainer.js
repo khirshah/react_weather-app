@@ -74,9 +74,9 @@ export default class WeatherContainer extends Component {
     
     if(this.state.loaded == false) return null;
     return (
-      <div>
+      <div className={styles.weather_container}>
         {this.state.isMsgBoxVisible && <MessageBox theme={this.props.theme} message={this.state.userMessage}/>}
-        {this.state.isWeatherVisible && <div className={styles.weather_container}>
+        {this.state.isWeatherVisible && <div className={styles.weather_items_container}>
           {this.createDailyWeather()} 
         </div>}
       </div>

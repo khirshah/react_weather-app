@@ -11,8 +11,8 @@ export default class DailyWeather extends Component {
   render() {
     return(
       <div className={styles.daily_weather}>
-      	<div className="label">{days[new Date(this.props.data.date*1000).getDay()]}</div>
-        <img src={require(`../img/${this.props.data.icon}.png`)}/>
+      	<div className={styles.label}>{days[new Date(this.props.data.date*1000).getDay()]}</div>
+        <img className={styles.weather_image} src={require(`../img/${this.props.data.icon}.png`)}/>
         <div className="temperature">{`${this.props.data.min}° ${this.props.data.max}°`}</div>
       </div>
 

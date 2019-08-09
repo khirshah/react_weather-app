@@ -1,18 +1,25 @@
 .theme_button1 {
-	width: 10px;
-	height: 10px;
+	width: 30px;
+	height: 15px;
 	background-color: #731A2B;
 	border: 1px solid white;
+	border-radius: 3px;
+	margin: 3px;
 }
 
 .theme_button2 {
-	width: 10px;
-	height: 10px;
-	background-color: #063546;
-	border: 1px solid white;
+	width: 30px;
+	height: 15px;
+	background-color: white;
+	border: 1px solid #731A2B;
+	border-radius: 3px;
+	margin: 3px;
 }
 
 .themes_container {
-	background-color: white;
-	width: 60px;
+	display: flex;
+	position: absolute;
+	top:10px;
+	right:0;
+	width: 80px;
 }
