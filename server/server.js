@@ -42,16 +42,15 @@ function filterData(data) {
     values.push({
       min: Math.round(Math.min(...mins.slice(i,i+8))),
       max:Math.round(Math.max(...maxs.slice(i,i+8))),
-      icon: other[i+5].icon,
-      date: other[i+5].date,
-      dt: other[i+5].dt
+      icon: other[i].icon,
+      date: other[i].date
     });
   }
   return values;
 }
 
 app.post('/getWeatherData', function(req, res, next) {
-	fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${req.body.city},uk&units=metric&APPID=d4c1d69ed7ce962b094e9f8cc1d2af5f`)
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${req.body.city},uk&units=metric&APPID=d4c1d69ed7ce962b094e9f8cc1d2af5f`)
   .then(function(response) {
     return response.json();
   })
@@ -79,6 +78,6 @@ app.get('/getAllWeatherData', function(req, res, next) {
  
 app.listen(PORT, () => {
 
-	console.log(`app is listening on PORT: ${PORT}`)
+  console.log(`app is listening on PORT: ${PORT}`)
 
 });
