@@ -20,7 +20,7 @@ export default class WeatherContainer extends Component {
   requestWeatherData = (location) => {
     console.log(location)
     axios({ //"http://localhost:3030/getWeatherData"
-      url: process.env.URL || "https://agi-weather-server.herokuapp.com/getWeatherData"
+      url: process.env.URL || "https://agi-weather-server.herokuapp.com/getWeatherData",
       method: "post",
       data: {
         city: location
