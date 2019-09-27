@@ -12,7 +12,7 @@ const themes = {
 export default class Button extends Component {
   render() {
     return(
-      <div className={themes[this.props.theme][this.props.name]} onClick={this.props.onclick}>{this.props.label}</div>
+      <div className={themes[this.props.theme][this.props.name]} onClick={this.props.onClick}>{this.props.label}</div>
       )
   }
 }
