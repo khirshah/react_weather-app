@@ -25,12 +25,13 @@ export default class WeatherContainer extends Component {
       response => {
         console.log(response.data)
         if (response.data) {
+          const first6 = response.data.list.slice(0,5)
           this.setState({
             loaded: true,
             isWeatherVisible: true,
             isMsgBoxVisible: true,
             userMessage: `Weather in ${location}`,
-            data: response.data.list,
+            data: first6,
           })
         }
         else {
@@ -74,7 +75,7 @@ export default class WeatherContainer extends Component {
       <div className={styles.weather_container}>
         {this.state.isMsgBoxVisible && <MessageBox theme={this.props.theme} message={this.state.userMessage}/>}
         {this.state.isWeatherVisible && <div className={styles.weather_items_container}>
-          /* {this.createDailyWeather()}  */
+        {this.createDailyWeather()}
         </div>}
       </div>
       );

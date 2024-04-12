@@ -52,14 +52,12 @@ module.exports = {
       },
       {
         test: /\.svg|png$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              encoding: false,
-            },
+        use: {
+          loader: 'url-loader',
+          options: {
+          encoding: false,
           },
-        ],
+        },
       },
     ]
   }
