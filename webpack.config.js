@@ -1,29 +1,23 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-	mode: 'development',
-  entry: {
-    app: './app/index.js'
+  mode: 'development',
+  output: {
+    path: path.join(__dirname, "/public"), // the bundle output path
+    filename: "app.bundle.js", // the name of the bundle
   },
-  devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist'
+    port: 3030,
   },
   plugins: [
-  	new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Weather app',
-      template: './app/template/index.html',
+      template: './src/template/index.html',
       inject: false
     })
   ],
-  resolve: { extensions: ["*", ".js", ".jsx"] },
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  },
+  resolve: { extensions: [".*", ".js", ".jsx"] },
    module: {
      rules: [
       {
@@ -55,7 +49,16 @@ module.exports = {
         use: {
             loader: 'babel-loader'
         }
-      }
+      },
+      {
+        test: /\.svg|png$/i,
+        use: {
+          loader: 'url-loader',
+          options: {
+          encoding: false,
+          },
+        },
+      },
     ]
   }
 };
