@@ -4,7 +4,7 @@ const fetch = require('node-fetch')
 //---------------------- express -------------------------
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3040;
 //-------------------- body parser -----------------------
 const bodyParser = require('body-parser');
 
@@ -50,30 +50,34 @@ function filterData(data) {
 }
 
 app.post('/getWeatherData', function(req, res, next) {
-  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${req.body.city},uk&units=metric&APPID=d4c1d69ed7ce962b094e9f8cc1d2af5f`)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(myJson) {
-    if (myJson.message == 'city not found') {
-      res.send();
-    }
-    else {
-      let processedData = filterData(myJson);
-      res.send(processedData);
-    }
-  });
+  console.log('getWeatherData')
+  // fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${req.body.city},uk&units=metric&APPID=d4c1d69ed7ce962b094e9f8cc1d2af5f`)
+  // .then(function(response) {
+  //   return response.json();
+  // })
+  // .then(function(myJson) {
+  //   if (myJson.message == 'city not found') {
+  //     res.send();
+  //   }
+  //   else {
+  //     let processedData = filterData(myJson);
+  //     res.send(processedData);
+  //   }
+  // });
 });
 
-app.get('/getAllWeatherData', function(req, res, next) {
-
-  fetch("https://api.openweathermap.org/data/2.5/forecast?q=Stroud,uk&units=metric&APPID=d4c1d69ed7ce962b094e9f8cc1d2af5f")
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(myJson) {
-    res.send(myJson);
-  });
+app.get('/getAllWeatherData', async function(req, res, next) {
+  console.log('getAllWeatherData')
+  const response = await fetch("https://api.openweathermap.org/data/2.5/weather?lat=51.744307&lon=-2.2412519&appid=d4c1d69ed7ce962b094e9f8cc1d2af5f")
+  console.log(response)
+  console.log('end')
+  // .then(function(response) {
+  //   console.log(response)
+  //   return response.json();
+  // })
+  // .then(function(myJson) {
+  //   res.send(myJson);
+  // });
 });
  
 app.listen(PORT, () => {

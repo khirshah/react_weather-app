@@ -16,23 +16,21 @@ export default class WeatherContainer extends Component {
     userMessage: "",
     isWeatherVisible: false
   }
-  
+
   requestWeatherData = (location) => {
     axios({
-      url: process.env.URL || "https://agi-weather-server.herokuapp.com/getWeatherData",
-      method: "post",
-      data: {
-        city: location
-      }
+      url: "https://api.openweathermap.org/data/2.5/forecast?lat=51.744307&lon=-2.2412519&units=metric&appid=d4c1d69ed7ce962b094e9f8cc1d2af5f",
+      method: "get"
     }).then(
       response => {
+        console.log(response.data)
         if (response.data) {
           this.setState({
             loaded: true,
             isWeatherVisible: true,
             isMsgBoxVisible: true,
             userMessage: `Weather in ${location}`,
-            data: response.data,
+            data: response.data.list,
           })
         }
         else {
@@ -76,7 +74,7 @@ export default class WeatherContainer extends Component {
       <div className={styles.weather_container}>
         {this.state.isMsgBoxVisible && <MessageBox theme={this.props.theme} message={this.state.userMessage}/>}
         {this.state.isWeatherVisible && <div className={styles.weather_items_container}>
-          {this.createDailyWeather()} 
+          /* {this.createDailyWeather()}  */
         </div>}
       </div>
       );
