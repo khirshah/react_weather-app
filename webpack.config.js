@@ -50,15 +50,6 @@ module.exports = {
             loader: 'babel-loader'
         }
       },
-      {
-        test: /\.svg|png$/i,
-        use: {
-          loader: 'url-loader',
-          options: {
-          encoding: false,
-          },
-        },
-      },
     ]
   }
 };
