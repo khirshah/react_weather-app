@@ -42,7 +42,9 @@ module.exports = {
         type: "javascript/auto",
         use: {
           loader: 'file-loader',
+          options: {
           esModule: false
+          }
         }
       },
       {
