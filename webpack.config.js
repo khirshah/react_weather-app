@@ -38,16 +38,6 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        type: "javascript/auto",
-        use: {
-          loader: 'file-loader',
-          options: {
-          esModule: false
-          }
-        }
-      },
-      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
