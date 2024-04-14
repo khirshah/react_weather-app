@@ -39,9 +39,11 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader'
-        ]
+        type: "javascript/auto",
+        use: {
+          loader: 'file-loader',
+          esModule: false
+        }
       },
       {
         test: /\.(js|jsx)$/,
